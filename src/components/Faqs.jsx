@@ -1,7 +1,9 @@
 
 import React from 'react';
-
-import questions from "../assets/question.png"
+import questionMark from "../assets/questionMark.png"
+import questions from "../assets/question.png";
+import sata from '../assets/sata.png';
+import stars from "../assets/stars.png"
 
 import {
     Accordion,
@@ -48,6 +50,7 @@ const Faqs = () => {
       <div className=' flex flex-col md:flex-row items-center justify-center gap-5 md:gap-20'>
         <div className=' w-full '>
           <div className='text-center md:text-start'>
+              <img src={sata} alt="" />
            <p className=' capitalize text-xl md:text-3xl font-bold text-white'>frequently asked</p>
           <p className=' text-[#FF26B9] text-xl md:text-3xl font-bold'>questions</p>
           <p className=' text-slate-100 text-xs mt-5'>We got answers to the questions that you might</p>
@@ -75,7 +78,16 @@ const Faqs = () => {
             }
            
         </div>
-        <div className=' md:w-full md:h-full '>
+        <div className=' md:w-full md:h-full relative'>
+          <img className=' absolute right-0' src={sata} alt="" />
+              <img src={stars} className=' absolute bottom-0 right-10' alt="" />
+          <div className=' flex item-center justify-center gap-3'>
+                <img className='' src={questionMark} alt="" />
+            <img src={questionMark} alt="" />
+          
+                <img src={questionMark} alt="" />
+          </div>
+              <img src={sata} alt="" />
           <img className=' md:w-full md:object-cover w-96' src={questions} alt="" />
         </div>
       </div>
