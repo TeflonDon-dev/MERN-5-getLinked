@@ -14,7 +14,9 @@ const Register = () => {
 
 
 
-    const navigate=useNavigate()
+    const navigate = useNavigate()
+    
+    const [loading, setLoading] = useState(false);
 
     const [formData, setFormData] = useState({
         email: "",
@@ -39,7 +41,7 @@ const Register = () => {
         
      
     
-     
+     setLoading(true)
             const fetchData = await fetch('https://backend.getlinked.ai/hackathon/registration', {
                    method: "POST",
                 headers:{
@@ -52,12 +54,13 @@ const Register = () => {
         console.log(response);
 
         if (response.id) {
-            
+            setLoading(false)
             //   navigate('/registerSuccess')
             dispatch(openModal())
    
         } else {
             toast.error(response.email)
+            setLoading(false)
         }
           
               
@@ -132,7 +135,7 @@ const Register = () => {
                       <input  onChange={handleChange} type="checkbox" name="privacy_poclicy_accepted" id="privacy_poclicy_accepted" checked={ formData.privacy_poclicy_accepted} />
                       I agreed with the terms and conditions and the privacy policy
                   </label>
-                  <button  className=' bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-full text-white py-3'>Register Now</button>
+                  <button className=' bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-full text-white py-3'>{loading ? "Submitting" : "Register Now"}</button>
               </form>
           </div>
     </section>

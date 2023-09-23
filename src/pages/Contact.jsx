@@ -12,6 +12,8 @@ const Contact = () => {
 
   const navigate = useNavigate();
 
+  const [loading, setLoading] = useState(false);
+
   const [contactData, setContactData] = useState({
     email: "",
     first_name: "",
@@ -32,7 +34,7 @@ const Contact = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-
+    setLoading(true)
     const fetchData = await fetch(" https://backend.getlinked.ai/hackathon/contact-form", {
       method: "POST",
       headers: {
@@ -42,7 +44,8 @@ const Contact = () => {
     })
     const response = await fetchData.json();
     if (response.id) {
-          toast.success("Message sent!")
+      toast.success("Message sent!")
+      setLoading(false)
     }
 
     setContactData({
@@ -114,7 +117,7 @@ const Contact = () => {
         <input required onChange={handleChange} type="email" name="email" value={contactData.email} placeholder='Enter email address' id="email" className=' p-2 text-sm outline-none rounded-md bg-[#150E28] border border-white focus:border-pink-500 duration-500' />
         <label htmlFor="message">Message</label>
           <textarea required onChange={handleChange} name="message" value={contactData.message} id="message" className="bg-[#150E28] outline-none h-32  w-full p-2 text-sm  border rounded-md mb-6 focus:border-pink-500 duration-500"></textarea>
-          <button className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-sm px-5 py-2 w-1/2 self-center'>Submit</button>
+          <button className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-sm px-5 py-2 w-1/2 self-center'>{loading ? "Submitting" : "Submit"}</button>
         </form>
       </div>
          <p className=' self-center text-[#D434FE] md:hidden'>Share on</p>
