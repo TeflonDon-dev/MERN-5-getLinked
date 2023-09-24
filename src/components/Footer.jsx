@@ -26,9 +26,9 @@ const Footer = () => {
         <div className=' flex flex-col items-start gap-2'>
           <p className=' text-[#D434FE]'>Useful Links</p>
           <ul className=' text-sm'>
-            <li className=' my-3'><a href="/">Overview</a></li>
-            <li className=' my-3'><a href="/">Timeline</a></li>
-            <li className=' my-3'><a href="/">FAQS</a></li>
+            <li className=' my-3'><a href="/#overview">Overview</a></li>
+            <li className=' my-3'><a href="/#timeline">Timeline</a></li>
+            <li className=' my-3'><a href="/#faqs">FAQS</a></li>
             <li className=' my-3'><Link to="/register">Register</Link></li>
           </ul>
           <div className=' flex items-center justify-start gap-2 mb-5 cursor-pointer'>
